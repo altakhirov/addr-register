@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div style="margin-left: -250px;">
+        <h2 class="mt-5">Внимательно прочтите все шаги!</h2>
+        <ol>
+            <li>
+                Система считывает файлы только в формате <strong>.xlsx</strong>.
+            </li>
+             <li>
+                Ячейки в файле не должны содержать формулы и прочие вычисляемые поля. Если такие имеются, сохраните их как число/строку.
+            </li>
+            <li>
+                Ваш <strong>.xlsx</strong> должен содержать информацию в следующем формате (обратите внимание, чтобы порядок строк и заголовки стоблцов совпадали с нижеуказанным примером):
+                <img src="{% static 'sample.png' %}" alt="">
+                <br>
+
+            </li>
+        </ol>
+        <h4 class="mt-5">Загрузка файла .xlsx:</h4>
+        {% if messages %}
+            <ul class="messages" style="color: red;">
+              {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+            </ul>
+        {% endif %}
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+              <div class="form-check">
+              <input class="form-check-input" type="radio" name="with_flats" value="n" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                ИЖС / частные дома
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="with_flats" value="y" id="flexRadioDefault2">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Многоэтажные дома
+              </label>
+            </div>
+            </div>
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Загрузка файла</label>
+              <input class="form-control" type="file" name="file" id="formFile" required>
+            </div>
+            <input type="submit" value="Загрузить">
+        </form>
+
+        <h5 class="mt-5" style="margin-bottom: 50px;"><a href="{% url 'index:file_list' %}">Загруженные файлы</a></h5>
+    </div>
+{% endblock content %}

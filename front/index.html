@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>BigData</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <div class="d-flex">
+      <span class="navbar-brand">BigData v2</span>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Добавить объекты в реестр</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Документация</a>
+        </li>
+      </ul>
+    </div>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a id="lang-dropdown" data-lang-current="ru" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Русский
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="lang-dropdown">
+          <a class="dropdown-item active" href="#" data-lang-option="ru">Русский</a>
+          <a class="dropdown-item" href="#" data-lang-option="oz">Узбекский</a>
+          <a class="dropdown-item" href="#" data-lang-option="uz">O'zbekcha</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="preloader">Пожалуйста подождите...</div>
+  <div class="content fade">
+    <ul class="nav nav-pills mb-3" role="tablist">
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link " id="tab-1" data-toggle="pill" href="#pane-1" role="tab" aria-controls="pane-1" aria-selected="true" data-i18n="text" data-ru="Поиск адреса" data-oz="Манзилни кидириш" data-uz="Manzil qidirish">Поиск адреса</a>-->
+<!--      </li>-->
+      <li class="nav-item">
+        <a class="nav-link active" id="tab-2" data-toggle="pill" href="#pane-2" role="tab" aria-controls="pane-2" aria-selected="false" data-i18n="text" data-ru="Выбрать адрес" data-oz="Манзилни танланг" data-uz="Manzil tanlang">Выбрать адрес</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade" id="pane-1" role="tabpanel" aria-labelledby="tab-1">
+        <div class="row">
+          <div class="col-6">
+            <form>
+              <div class="form-group">
+                <label for="tab-1-address" data-i18n="text" data-ru="Адрес" data-oz="Манзил" data-uz="Mazil">Адрес</label>
+                <select id="tab-1-address" data-role="form1-address-select" data-plugin="select2" style="width: 100%">
+                  <option></option>
+                </select>
+              </div>
+              <div id="form1-address-details" class="fade">
+                <div class="form-group">
+                  <label for="tab-1-district" data-i18n="text" data-ru="Район" data-oz="Туман" data-uz="Tuman">Район</label>
+                  <input id="tab-1-district" data-role="form1-district-input" class="form-control" type="text" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="tab-1-street" data-i18n="text" data-ru="Улица" data-oz="Коча" data-uz="Ko'cha">Улица</label>
+                  <input id="tab-1-street" data-role="form1-street-input" class="form-control" type="text" readonly>
+                </div>
+
+              </div>
+            </form>
+          </div>
+          <div class="col-6">
+            <div id="form1-map" class="map fade"></div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade show active" id="pane-2" role="tabpanel" aria-labelledby="tab-2">
+        <div class="row">
+          <div class="col-6">
+            <form>
+              <div class="form-group">
+                <label for="tab-2-district" data-i18n="text" data-ru="Район" data-oz="Туман" data-uz="Tuman">Район</label>
+                <select id="tab-2-district" data-role="form2-district-select" data-plugin="select2" style="width: 100%">
+                  <option></option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="tab-2-street-type" data-i18n="text" data-ru="Тип улицы" data-oz="Коча тури" data-uz="Ko'cha turi">Тип улицы</label>
+                <select id="tab-2-street-type" data-role="form2-street-type-select" data-plugin="select2" style="width: 100%" disabled>
+                  <option></option>
+                  <option value="street">Улица</option>
+                  <option value="quarter">Квартал</option>
+                  <option value="massif">Массив</option>
+                  <option value="avenue">Проспект</option>
+                  <option value="passage">Проезд, тупик, переулок</option>
+                  <option value="other">Другое</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="tab-2-street" data-i18n="text" data-ru="Улица" data-oz="Коча" data-uz="Ko'cha">Улица</label>
+                <select id="tab-2-street" data-role="form2-street-select" data-plugin="select2" style="width: 100%" disabled>
+                  <option></option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="tab-2-house" data-i18n="text" data-ru="Дом" data-oz="Уй" data-uz="Uy">Дом</label>
+                <select id="tab-2-house" data-role="form2-house-select" data-plugin="select2" style="width: 100%" disabled>
+                  <option></option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="tab-2-community" data-i18n="text" data-ru="Махалля" data-oz="Махалла" data-uz="Maxalla">Махалля</label>
+                <input id="tab-2-community" data-role="form2-community-input" class="form-control" type="text" readonly>
+              </div>
+            </form>
+          </div>
+          <div class="col-6">
+            <div class="map fade" id="form2-map"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/i18n/ru.js"></script>
+<script src="https://maps.api.2gis.ru/2.0/loader.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

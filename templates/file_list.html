@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+     {% if messages %}
+        <ul class="messages" style="color: red;">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+        </ul>
+    {% endif %}
+    <h4 class="mt-5">Загруженные файлы:</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Файл</th>
+          <th scope="col">Создан</th>
+          <th scope="col">Тип домов</th>
+          <th scope="col">Действие</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for file in file_list %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td><a href="{{ file.file.url }}">{{ file.file.name }}</a></td>
+          <td>{{file.created_at}}</td>
+          <td>{% if file.with_flats %} Многоэтажные дома {% else %} ИЖС/частные дома{% endif %}</td>
+          <td>{% if file.parsed %}<a href="{% url 'index:delete_file' pk=file.pk %}">Удалить</a>{% elif file.in_progress %}В процессе...{% elif file.errors %}{{ file.errors }}{% else %}<a href="{% url 'index:parse_into_db' pk=file.pk %}">Загрузить в БД</a>{% endif %}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+{% endblock content %}

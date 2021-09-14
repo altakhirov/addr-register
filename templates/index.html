@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="mt-5">Адресный реестр города Ташкента</h1>
+<div class="preloader">Пожалуйста подождите...</div>
+<div class="content fade">
+    <ul class="nav nav-pills mb-3" role="tablist">
+        <!--      <li class="nav-item">-->
+        <!--        <a class="nav-link " id="tab-1" data-toggle="pill" href="#pane-1" role="tab" aria-controls="pane-1" aria-selected="true" data-i18n="text" data-ru="Поиск адреса" data-oz="Манзилни кидириш" data-uz="Manzil qidirish">Поиск адреса</a>-->
+        <!--      </li>-->
+{#        <li class="nav-item">#}
+{#            <a class="nav-link active" id="tab-2" data-toggle="pill" href="#pane-2" role="tab" aria-controls="pane-2" aria-selected="false" data-i18n="text" data-ru="Выбрать адрес" data-oz="Манзилни танланг" data-uz="Manzil tanlang">Выбрать адрес</a>#}
+{#        </li>#}
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade" id="pane-1" role="tabpanel" aria-labelledby="tab-1">
+            <div class="row">
+                <div class="col-6">
+                    <form>
+                        <div class="form-group">
+                            <label for="tab-1-address" data-i18n="text" data-ru="Адрес" data-oz="Манзил" data-uz="Mazil">Адрес</label>
+                            <select id="tab-1-address" data-role="form1-address-select" data-plugin="select2" style="width: 100%">
+                                <option></option>
+                            </select>
+                        </div>
+                        <div id="form1-address-details" class="fade">
+                            <div class="form-group">
+                                <label for="tab-1-district" data-i18n="text" data-ru="Район" data-oz="Туман" data-uz="Tuman">Район</label>
+                                <input id="tab-1-district" data-role="form1-district-input" class="form-control" type="text" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="tab-1-street" data-i18n="text" data-ru="Улица" data-oz="Коча" data-uz="Ko'cha">Улица</label>
+                                <input id="tab-1-street" data-role="form1-street-input" class="form-control" type="text" readonly>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="col-6">
+                    <div id="form1-map" class="map fade"></div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade show active" id="pane-2" role="tabpanel" aria-labelledby="tab-2">
+            <div class="row">
+                <div class="col-6">
+                    <form>
+                        <div class="form-group">
+                            <label for="tab-2-district" data-i18n="text" data-ru="Район" data-oz="Туман" data-uz="Tuman">Район</label>
+                            <select id="tab-2-district" data-role="form2-district-select" data-plugin="select2" style="width: 100%">
+                                <option></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tab-2-street-type" data-i18n="text" data-ru="Тип улицы" data-oz="Коча тури" data-uz="Ko'cha turi">Тип улицы</label>
+                            <select id="tab-2-street-type" data-role="form2-street-type-select" data-plugin="select2" style="width: 100%" disabled>
+                                <option></option>
+                                <option value="street">Улица</option>
+                                <option value="quarter">Квартал</option>
+                                <option value="massif">Массив</option>
+                                <option value="avenue">Проспект</option>
+                                <option value="passage">Проезд, тупик, переулок</option>
+                                <option value="other">Другое</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tab-2-street" data-i18n="text" data-ru="Улица" data-oz="Коча" data-uz="Ko'cha">Улица</label>
+                            <select id="tab-2-street" data-role="form2-street-select" data-plugin="select2" style="width: 100%" disabled>
+                                <option></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tab-2-house" data-i18n="text" data-ru="Дом" data-oz="Уй" data-uz="Uy">Дом</label>
+                            <select id="tab-2-house" data-role="form2-house-select" data-plugin="select2" style="width: 100%" disabled>
+                                <option></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="tab-2-community" data-i18n="text" data-ru="Махалля" data-oz="Махалла" data-uz="Maxalla">Махалля</label>
+                            <input id="tab-2-community" data-role="form2-community-input" class="form-control" type="text" readonly>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-6">
+                    <div class="map fade" id="form2-map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{#    <p class="lead">пфп</p>#}
+{% endblock content %}
